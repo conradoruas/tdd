@@ -16,6 +16,16 @@ class TestProjeto(unittest.TestCase):
         self.assertEqual(self.projeto.id, 1)
         self.assertEqual(self.projeto.nome, "Jornada do Estudante")
         self.assertEqual(self.projeto.funcionarios, [])
+    
+    def teste3_adiciona_funcionario(self):
+        from funcionario import Funcionario
+        funcionario = Funcionario(id=1, nome="Pedro Amorim", cargo="Desenvolvedor")
+
+        self.projeto.addFuncionario(funcionario)
+
+        self.assertEqual(self.projeto.id, 1)
+        self.assertEqual(self.projeto.nome, "e-SUS")
+        self.assertIn(funcionario, self.projeto.funcionarios)
 
 if __name__ == "__main__":
     unittest.main()
