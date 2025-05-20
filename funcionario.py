@@ -10,3 +10,6 @@ class Funcionario:
     
     def setCargo(self, cargo):
         self.cargo = cargo
+    
+    def addProjeto(self, projeto):
+        self.projetos.append(projeto)
