@@ -4,3 +4,6 @@ class Funcionario:
         self.nome = nome
         self.cargo = cargo
         self.projetos = []
+    
+    def setNome(self, nome):
+        self.nome = nome
