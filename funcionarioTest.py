@@ -37,6 +37,18 @@ class TestFuncionario(unittest.TestCase):
         self.assertEqual(self.funcionario.nome, "João Silva")
         self.assertEqual(self.funcionario.cargo, "Desenvolvedor")
         self.assertIn(projetoEsus, self.funcionario.projetos)
+    
+    def teste5_remove_projeto(self):
+        from projeto import Projeto
+        projetoEsus = Projeto(id=1, nome="e-SUS")
+
+        self.funcionario.addProjeto(projetoEsus)
+        self.funcionario.removeProjeto(projetoEsus)
+
+        self.assertEqual(self.funcionario.id, 1)
+        self.assertEqual(self.funcionario.nome, "João Silva")
+        self.assertEqual(self.funcionario.cargo, "Desenvolvedor")
+        self.assertEqual(self.funcionario.projetos, [])
 
 if __name__ == "__main__":
     unittest.main()
