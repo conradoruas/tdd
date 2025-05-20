@@ -6,3 +6,6 @@ class Projeto:
     
     def setNome(self, nome):
         self.nome = nome
+    
+    def addFuncionario(self, funcionario):
+        self.funcionarios.append(funcionario)
