@@ -18,6 +18,14 @@ class TestFuncionario(unittest.TestCase):
         self.assertEqual(self.funcionario.nome, "Abraão Medeiros")
         self.assertEqual(self.funcionario.cargo, "Desenvolvedor")
         self.assertEqual(self.funcionario.projetos, [])
+    
+    def teste3_altera_cargo(self):
+        self.funcionario.setCargo("QA")
+
+        self.assertEqual(self.funcionario.id, 1)
+        self.assertEqual(self.funcionario.nome, "João Silva")
+        self.assertEqual(self.funcionario.cargo, "QA")
+        self.assertEqual(self.funcionario.projetos, [])
 
 if __name__ == "__main__":
     unittest.main()
