@@ -16,3 +16,6 @@ class TestProjeto(unittest.TestCase):
         self.assertEqual(self.projeto.id, 1)
         self.assertEqual(self.projeto.nome, "Jornada do Estudante")
         self.assertEqual(self.projeto.funcionarios, [])
+
+if __name__ == "__main__":
+    unittest.main()
