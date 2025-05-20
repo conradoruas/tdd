@@ -13,3 +13,6 @@ class Funcionario:
     
     def addProjeto(self, projeto):
         self.projetos.append(projeto)
+
+    def removeProjeto(self, projeto):
+        self.projetos.remove(projeto)
