@@ -10,3 +10,6 @@ class TestFuncionario(unittest.TestCase):
         self.assertEqual(self.funcionario.nome, "João Silva")
         self.assertEqual(self.funcionario.cargo, "Desenvolvedor")
         self.assertEqual(self.funcionario.projetos, [])
+
+if __name__ == "__main__":
+    unittest.main()
