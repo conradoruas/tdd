@@ -7,3 +7,6 @@ class Funcionario:
     
     def setNome(self, nome):
         self.nome = nome
+    
+    def setCargo(self, cargo):
+        self.cargo = cargo
