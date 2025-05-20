@@ -26,7 +26,7 @@ class TestEmpresa(unittest.TestCase):
         self.assertIn(func_2, self.empresa.funcionarios)
         self.assertEqual(self.empresa.projetos, [])
     
-    def teste3_adiciona_unico_funcionario_como_grupo_raise_TypeError(self):
+    def teste3_adiciona_unico_funcionario_ao_inves_de_lista_de_funcionarios_raise_TypeError(self):
         func_1 = Funcionario(id=1, nome="João Silva", cargo="Desenvolvedor")
         
         with self.assertRaises(TypeError):
