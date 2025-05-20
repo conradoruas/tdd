@@ -49,6 +49,13 @@ class TestFuncionario(unittest.TestCase):
         self.assertEqual(self.funcionario.nome, "João Silva")
         self.assertEqual(self.funcionario.cargo, "Desenvolvedor")
         self.assertEqual(self.funcionario.projetos, [])
+    
+    def test6_remover_projeto_inexistente_raise_ValueError(self):
+        from projeto import Projeto
+        projetoEsus = Projeto(id=1, nome="e-SUS")
+        
+        with self.assertRaises(ValueError):
+            self.funcionario.removeProjeto(projetoEsus)
 
 if __name__ == "__main__":
     unittest.main()
