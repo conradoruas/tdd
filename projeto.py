@@ -3,3 +3,6 @@ class Projeto:
         self.id = id
         self.nome = nome
         self.funcionarios = []
+    
+    def setNome(self, nome):
+        self.nome = nome
