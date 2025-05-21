@@ -21,17 +21,8 @@ class TestOcorrencia(unittest.TestCase):
         self.assertEqual(self.ocorrencia.estado, "aberta")
     
     def teste2_fechar_ocorrencia(self):
-        ocorrencia = Ocorrencia(
-            chave="TASK-1", 
-            resumo="Implementar login", 
-            tipo="tarefa", 
-            prioridade="alta", 
-            projeto=self.projeto, 
-            responsavel=self.funcionario
-        )
-        
-        ocorrencia.fechar()
-        self.assertEqual(ocorrencia.estado, "fechada")
+        self.ocorrencia.fechar()
+        self.assertEqual(self.ocorrencia.estado, "fechada")
 
 if __name__ == "__main__":
     unittest.main()
