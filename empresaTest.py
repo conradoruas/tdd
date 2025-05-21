@@ -31,6 +31,25 @@ class TestEmpresa(unittest.TestCase):
         
         with self.assertRaises(TypeError):
             self.empresa.addFuncionarios(func_1)
+    
+    def teste4_adiciona_grupo_projetos(self):
+        proj_1 = Projeto(id=1, nome="e-SUS")
+        proj_2 = Projeto(id=2, nome="Jornada do Estudante")
+        listaProjetos = [proj_1, proj_2]
+
+        self.empresa.addProjetos(listaProjetos)
+
+        self.assertEqual(self.empresa.id, 1)
+        self.assertEqual(self.empresa.nome, "W")
+        self.assertEqual(self.empresa.funcionarios, [])
+        self.assertIn(proj_1, self.empresa.projetos)
+        self.assertIn(proj_2, self.empresa.projetos)
+    
+    def teste5_adiciona_unico_projeto_ao_inves_de_lista_de_projetos_raise_TypeError(self):
+        proj_1 = Projeto(id=1, nome="e-SUS")
+        
+        with self.assertRaises(TypeError):
+            self.empresa.addProjetos(proj_1)
 
 if __name__ == "__main__":
     unittest.main()
