@@ -10,6 +10,7 @@ class TestOcorrencia(unittest.TestCase):
         self.projeto.addFuncionario(self.funcionario)
         
         self.ocorrencia = Ocorrencia(chave="TASK-1", resumo="Implementar login", tipo="tarefa", prioridade="alta", projeto=self.projeto, responsavel=self.funcionario)
+        self.funcionario.addOcorrencia(self.ocorrencia)
         
     def teste1_cria_ocorrencia(self):
         self.assertEqual(self.ocorrencia.chave, "TASK-1")
@@ -40,6 +41,48 @@ class TestOcorrencia(unittest.TestCase):
         
         with self.assertRaises(ValueError):
             self.ocorrencia.mudar_responsavel(novo_funcionario)
+    
+    def cria_dez_ocorrencias_para_o_funcionario(self, funcionario):
+        lista_ocorrencias = []
 
+        for i in range(10):
+            ocorrencia = Ocorrencia(
+                chave=f"TASK-{i}", 
+                resumo=f"Tarefa {i}", 
+                tipo="tarefa", 
+                prioridade="media", 
+                projeto=self.projeto, 
+                responsavel=funcionario
+            )
+            funcionario.addOcorrencia(ocorrencia)
+            lista_ocorrencias.append(ocorrencia)
+        return lista_ocorrencias
+    
+    def teste5_mudar_responsavel_com_10_ocorrencias_raise_ValueError(self):
+        novo_funcionario = Funcionario(id=2, nome="Gabriel Gomes", cargo="Desenvolvedor")
+        self.projeto.addFuncionario(novo_funcionario)
+        
+        self.cria_dez_ocorrencias_para_o_funcionario(novo_funcionario)
+        
+        with self.assertRaises(ValueError):
+            self.ocorrencia.mudar_responsavel(novo_funcionario)
+    
+    
+    def teste6_ocorrencias_fechadas_nao_contam_para_limite(self):
+        novo_funcionario = Funcionario(id=2, nome="Gabriel Gomes", cargo="Desenvolvedor")
+        ocorrencias = self.cria_dez_ocorrencias_para_o_funcionario(novo_funcionario)    
+        ocorrencias[0].fechar()
+        nova_ocorrencia = Ocorrencia(
+            chave="TASK-11", 
+            resumo="Tarefa 11", 
+            tipo="tarefa", 
+            prioridade="media", 
+            projeto=self.projeto, 
+            responsavel=self.funcionario
+        )
+        novo_funcionario.addOcorrencia(nova_ocorrencia)
+
+        self.assertEqual(nova_ocorrencia, novo_funcionario.getOcorrenciaByChave("TASK-11"))
+    
 if __name__ == "__main__":
     unittest.main()
