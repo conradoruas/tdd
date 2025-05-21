@@ -12,3 +12,6 @@ class Empresa:
     def addProjetos(self, projetos: list):
         for projeto in projetos:
             self.projetos.append(projeto)
+    
+    def addFuncionario(self, funcionario):
+        self.funcionarios.append(funcionario)
