@@ -30,3 +30,12 @@ class Ocorrencia:
         self.responsavel.removeOcorrencia(self)
         novo_responsavel.addOcorrencia(self)
         self.responsavel = novo_responsavel
+    
+    def mudar_prioridade(self, nova_prioridade):
+        if self.estado == "fechada":
+            raise ValueError("Não é possível mudar prioridade de ocorrência fechada")
+            
+        if nova_prioridade not in self.PRIORIDADES_VALIDAS:
+            raise ValueError(f"Prioridade inválida. Prioridades válidas: {', '.join(self.PRIORIDADES_VALIDAS)}")
+            
+        self.prioridade = nova_prioridade
