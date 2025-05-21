@@ -50,6 +50,16 @@ class TestEmpresa(unittest.TestCase):
         
         with self.assertRaises(TypeError):
             self.empresa.addProjetos(proj_1)
+    
+    def teste6_adiciona_funcionario(self):
+        func_1 = Funcionario(id=1, nome="João Silva", cargo="Desenvolvedor")
+        
+        self.empresa.addFuncionario(func_1)
+
+        self.assertEqual(self.empresa.id, 1)
+        self.assertEqual(self.empresa.nome, "W")
+        self.assertIn(func_1, self.empresa.funcionarios)
+        self.assertEqual(self.empresa.projetos, [])
 
 if __name__ == "__main__":
     unittest.main()
