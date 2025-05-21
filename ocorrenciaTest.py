@@ -32,6 +32,14 @@ class TestOcorrencia(unittest.TestCase):
         self.ocorrencia.mudar_responsavel(novo_funcionario)
         
         self.assertEqual(self.ocorrencia.responsavel, novo_funcionario)
+    
+    def teste4_mudar_responsavel_ocorrencia_fechada_raise_ValueError(self):
+        novo_funcionario = Funcionario(id=2, nome="Gabriel Gomes", cargo="Desenvolvedor")
+        self.projeto.addFuncionario(novo_funcionario)
+        self.ocorrencia.fechar()
+        
+        with self.assertRaises(ValueError):
+            self.ocorrencia.mudar_responsavel(novo_funcionario)
 
 if __name__ == "__main__":
     unittest.main()
