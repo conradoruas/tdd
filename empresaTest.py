@@ -60,6 +60,16 @@ class TestEmpresa(unittest.TestCase):
         self.assertEqual(self.empresa.nome, "W")
         self.assertIn(func_1, self.empresa.funcionarios)
         self.assertEqual(self.empresa.projetos, [])
+    
+    def teste7_adiciona_projeto(self):
+        proj_1 = Projeto(id=1, nome="e-SUS")
+        
+        self.empresa.addProjeto(proj_1)
+
+        self.assertEqual(self.empresa.id, 1)
+        self.assertEqual(self.empresa.nome, "W")
+        self.assertEqual(self.empresa.funcionarios, [])
+        self.assertIn(proj_1, self.empresa.projetos)
 
 if __name__ == "__main__":
     unittest.main()
