@@ -186,6 +186,14 @@ class TestOcorrencia(unittest.TestCase):
     def teste17_mudar_para_prioridade_invalida_raise_ValueError(self):
         with self.assertRaises(ValueError):
             self.ocorrencia.mudar_prioridade("invalida")
+    
+    def teste18_mudar_responsavel_para_funcionario_de_outro_projeto_raise_ValueError(self):
+        outro_projeto = Projeto(id=2, nome="Jornada do Estudante")
+        funcionario_outro_projeto = Funcionario(id=3, nome="Lorenzo Zanela", cargo="Engenheiro")
+        outro_projeto.addFuncionario(funcionario_outro_projeto)
+        
+        with self.assertRaises(ValueError):
+            self.ocorrencia.mudar_responsavel(funcionario_outro_projeto)
 
     
 if __name__ == "__main__":
