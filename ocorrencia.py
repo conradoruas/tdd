@@ -7,3 +7,6 @@ class Ocorrencia:
         self.projeto = projeto
         self.responsavel = responsavel
         self.estado = "aberta"
+    
+    def fechar(self):
+        self.estado = "fechada"
