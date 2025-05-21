@@ -22,6 +22,7 @@ class TestOcorrencia(unittest.TestCase):
     
     def teste2_fechar_ocorrencia(self):
         self.ocorrencia.fechar()
+        
         self.assertEqual(self.ocorrencia.estado, "fechada")
 
 if __name__ == "__main__":
