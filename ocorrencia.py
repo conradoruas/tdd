@@ -1,5 +1,10 @@
 class Ocorrencia:
+    TIPOS_VALIDOS = ["tarefa", "bug", "melhoria"]
+
     def __init__(self, chave, resumo, tipo, prioridade, projeto, responsavel):
+        if tipo not in self.TIPOS_VALIDOS:
+            raise ValueError(f"Tipo inválido. Tipos válidos: {', '.join(self.TIPOS_VALIDOS)}")
+        
         self.chave = chave
         self.resumo = resumo
         self.tipo = tipo
