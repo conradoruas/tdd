@@ -4,3 +4,7 @@ class Empresa:
         self.nome = nome
         self.projetos = []
         self.funcionarios = []
+    
+    def addFuncionarios(self, funcionarios: list):
+        for funcionario in funcionarios:
+            self.funcionarios.append(funcionario)
