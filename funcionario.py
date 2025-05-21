@@ -19,15 +19,15 @@ class Funcionario:
         self.projetos.remove(projeto)
     
     def addOcorrencia(self, ocorrencia):
-        if self.hasLimiteDeOcorrencias():
-            raise ValueError("Funcionário atingiu o limite de 10 ocorrencias")
+        if self.hasLimiteDeOcorrenciasAbertas():
+            raise ValueError("Funcionário atingiu o limite de 10 ocorrencias abertas")
         self.ocorrencias.append(ocorrencia)
 
     def removeOcorrencia(self, ocorrencia):
         self.ocorrencias.remove(ocorrencia)
 
-    def hasLimiteDeOcorrencias(self):
-        count = sum(1 for ocorrencia in self.ocorrencias if ocorrencia.estado != "fechada")
+    def hasLimiteDeOcorrenciasAbertas(self):
+        count = sum(1 for ocorrencia in self.ocorrencias if ocorrencia.estado == "aberta")
         return count >= 10
     
     def getOcorrenciaByChave(self, chave):

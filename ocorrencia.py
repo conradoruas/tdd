@@ -27,7 +27,7 @@ class Ocorrencia:
         if novo_responsavel not in self.projeto.funcionarios:
             raise ValueError("Novo responsável deve estar no projeto da ocorrência")
 
-        if novo_responsavel.hasLimiteDeOcorrencias():
+        if novo_responsavel.hasLimiteDeOcorrenciasAbertas():
             raise ValueError("Não é possível adicionar uma ocorrencia a um responsável que já tem 10 ocorrencias")
         
         self.responsavel.removeOcorrencia(self)
