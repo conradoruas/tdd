@@ -84,5 +84,49 @@ class TestOcorrencia(unittest.TestCase):
 
         self.assertEqual(nova_ocorrencia, novo_funcionario.getOcorrenciaByChave("TASK-11"))
     
+    def teste7_cria_ocorrencia_com_tipo_valido_tarefa(self):
+        tipo = "tarefa"
+        ocorrencia = Ocorrencia(chave="TASK-1", resumo="resumo", tipo=tipo, prioridade="media", projeto=self.projeto, responsavel=self.funcionario)
+
+        self.assertEqual(ocorrencia.chave, "TASK-1")
+        self.assertEqual(ocorrencia.resumo, "resumo")
+        self.assertEqual(ocorrencia.prioridade, "media")
+        self.assertEqual(ocorrencia.projeto, self.projeto)
+        self.assertEqual(ocorrencia.responsavel, self.funcionario)
+        self.assertEqual(ocorrencia.tipo, tipo)
+    
+    def teste8_cria_ocorrencia_com_tipo_valido_bug(self):
+        tipo = "bug"
+        ocorrencia = Ocorrencia(chave="TASK-1", resumo="resumo", tipo=tipo, prioridade="media", projeto=self.projeto, responsavel=self.funcionario)
+
+        self.assertEqual(ocorrencia.chave, "TASK-1")
+        self.assertEqual(ocorrencia.resumo, "resumo")
+        self.assertEqual(ocorrencia.prioridade, "media")
+        self.assertEqual(ocorrencia.projeto, self.projeto)
+        self.assertEqual(ocorrencia.responsavel, self.funcionario)
+        self.assertEqual(ocorrencia.tipo, tipo)
+
+    def teste9_cria_ocorrencia_com_tipo_valido_melhoria(self):
+        tipo = "melhoria"
+        ocorrencia = Ocorrencia(chave="TASK-1", resumo="resumo", tipo=tipo, prioridade="media", projeto=self.projeto, responsavel=self.funcionario)
+
+        self.assertEqual(ocorrencia.chave, "TASK-1")
+        self.assertEqual(ocorrencia.resumo, "resumo")
+        self.assertEqual(ocorrencia.prioridade, "media")
+        self.assertEqual(ocorrencia.projeto, self.projeto)
+        self.assertEqual(ocorrencia.responsavel, self.funcionario)
+        self.assertEqual(ocorrencia.tipo, tipo)
+    
+    def teste10_cria_ocorrencia_com_tipo_invalido_raises_ValueError(self):
+        with self.assertRaises(ValueError):
+            Ocorrencia(
+                chave="INVALID-1", 
+                resumo="Tipo inválido", 
+                tipo="invalido", 
+                prioridade="media", 
+                projeto=self.projeto, 
+                responsavel=self.funcionario
+            )
+    
 if __name__ == "__main__":
     unittest.main()
