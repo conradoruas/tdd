@@ -128,5 +128,50 @@ class TestOcorrencia(unittest.TestCase):
                 responsavel=self.funcionario
             )
     
+    def teste11_cria_ocorrencia_com_prioridade_valida_baixa(self):
+        prioridade = "baixa"
+        ocorrencia = Ocorrencia(chave="TASK-1", resumo="resumo", tipo="tarefa", prioridade=prioridade, projeto=self.projeto, responsavel=self.funcionario)
+
+        self.assertEqual(ocorrencia.chave, "TASK-1")
+        self.assertEqual(ocorrencia.resumo, "resumo")
+        self.assertEqual(ocorrencia.prioridade, prioridade)
+        self.assertEqual(ocorrencia.projeto, self.projeto)
+        self.assertEqual(ocorrencia.responsavel, self.funcionario)
+        self.assertEqual(ocorrencia.tipo, "tarefa")
+    
+    def teste12_cria_ocorrencia_com_prioridade_valida_media(self):
+        prioridade = "media"
+        ocorrencia = Ocorrencia(chave="TASK-1", resumo="resumo", tipo="tarefa", prioridade=prioridade, projeto=self.projeto, responsavel=self.funcionario)
+
+        self.assertEqual(ocorrencia.chave, "TASK-1")
+        self.assertEqual(ocorrencia.resumo, "resumo")
+        self.assertEqual(ocorrencia.prioridade, prioridade)
+        self.assertEqual(ocorrencia.projeto, self.projeto)
+        self.assertEqual(ocorrencia.responsavel, self.funcionario)
+        self.assertEqual(ocorrencia.tipo, "tarefa")
+
+    def teste13_cria_ocorrencia_com_prioridade_valida_alta(self):
+        prioridade = "alta"
+        ocorrencia = Ocorrencia(chave="TASK-1", resumo="resumo", tipo="tarefa", prioridade=prioridade, projeto=self.projeto, responsavel=self.funcionario)
+
+        self.assertEqual(ocorrencia.chave, "TASK-1")
+        self.assertEqual(ocorrencia.resumo, "resumo")
+        self.assertEqual(ocorrencia.prioridade, prioridade)
+        self.assertEqual(ocorrencia.projeto, self.projeto)
+        self.assertEqual(ocorrencia.responsavel, self.funcionario)
+        self.assertEqual(ocorrencia.tipo, "tarefa")
+    
+    def teste14_cria_ocorrencia_com_prioridade_invalida_raises_ValueError(self):
+        with self.assertRaises(ValueError):
+            Ocorrencia(
+                chave="INVALID-1", 
+                resumo="Tipo inválido", 
+                tipo="tarefa", 
+                prioridade="invalida", 
+                projeto=self.projeto, 
+                responsavel=self.funcionario
+            )
+
+    
 if __name__ == "__main__":
     unittest.main()
