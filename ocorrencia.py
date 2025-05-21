@@ -24,6 +24,9 @@ class Ocorrencia:
         if self.estado == "fechada":
             raise ValueError("Não é possível mudar responsável de ocorrência fechada")
 
+        if novo_responsavel not in self.projeto.funcionarios:
+            raise ValueError("Novo responsável deve estar no projeto da ocorrência")
+
         if novo_responsavel.hasLimiteDeOcorrencias():
             raise ValueError("Não é possível adicionar uma ocorrencia a um responsável que já tem 10 ocorrencias")
         
