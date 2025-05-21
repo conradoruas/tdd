@@ -171,6 +171,21 @@ class TestOcorrencia(unittest.TestCase):
                 projeto=self.projeto, 
                 responsavel=self.funcionario
             )
+    
+    def teste15_mudar_prioridade_ocorrencia_aberta(self):
+        self.ocorrencia.mudar_prioridade("baixa")
+
+        self.assertEqual(self.ocorrencia.prioridade, "baixa")
+        
+    def teste16_mudar_prioridade_ocorrencia_fechada_raise_ValueError(self):
+        self.ocorrencia.fechar()
+        
+        with self.assertRaises(ValueError):
+            self.ocorrencia.mudar_prioridade("baixa")
+            
+    def teste17_mudar_para_prioridade_invalida_raise_ValueError(self):
+        with self.assertRaises(ValueError):
+            self.ocorrencia.mudar_prioridade("invalida")
 
     
 if __name__ == "__main__":
