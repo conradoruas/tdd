@@ -210,5 +210,20 @@ class TestOcorrencia(unittest.TestCase):
         with self.assertRaises(ValueError):
             novo_funcionario.addOcorrencia(nova_ocorrencia)
     
+    def test20_adicionar_ocorrencia_sem_responsavel_ao_funcionario_adiciona_na_ocorrencia_o_responsavel(self):
+        novo_funcionario = Funcionario(id=4, nome="Vitor Paz", cargo="Desempregado")
+        nova_ocorrencia = Ocorrencia(
+                chave="TASK-11", 
+                resumo="tarefa 11", 
+                tipo="tarefa", 
+                prioridade="baixa", 
+                projeto=self.projeto, 
+                responsavel=""
+            )
+        
+        novo_funcionario.addOcorrencia(nova_ocorrencia)
+
+        self.assertEquals(novo_funcionario, nova_ocorrencia.responsavel)
+
 if __name__ == "__main__":
     unittest.main()
