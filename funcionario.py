@@ -22,6 +22,7 @@ class Funcionario:
         if self.hasLimiteDeOcorrenciasAbertas():
             raise ValueError("Funcionário atingiu o limite de 10 ocorrencias abertas")
         self.ocorrencias.append(ocorrencia)
+        ocorrencia.setResponsavel(self)
 
     def removeOcorrencia(self, ocorrencia):
         self.ocorrencias.remove(ocorrencia)

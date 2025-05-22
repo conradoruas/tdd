@@ -42,3 +42,6 @@ class Ocorrencia:
             raise ValueError(f"Prioridade inválida. Prioridades válidas: {', '.join(self.PRIORIDADES_VALIDAS)}")
             
         self.prioridade = nova_prioridade
+    
+    def setResponsavel(self, responsavel):
+        self.responsavel = responsavel
