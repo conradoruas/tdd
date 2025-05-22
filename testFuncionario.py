@@ -56,6 +56,7 @@ class TestFuncionario(unittest.TestCase):
         
         with self.assertRaises(ValueError):
             self.funcionario.removeProjeto(projetoEsus)
+    
 
 if __name__ == "__main__":
     unittest.main()
